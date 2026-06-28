@@ -1,65 +1,340 @@
+import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
+
+import { Reveal } from "@/components/motion/reveal";
+import { absoluteUrl, createPageMetadata, siteConfig } from "@/lib/seo";
+
+const heroSignals = [
+  {
+    label: "Sites e landing pages",
+    title: "Presenca forte",
+    description: "Design, clareza comercial e resposta rapida para gerar confianca.",
+  },
+  {
+    label: "CRM comercial",
+    title: "Leads organizados",
+    description: "Pipeline, historico e processo visivel para vender com mais consistencia.",
+  },
+  {
+    label: "Sistemas sob medida",
+    title: "Operacao estruturada",
+    description: "Agenda, fluxos internos e rotinas digitais pensadas para o seu negocio.",
+  },
+];
+
+const proofCards = [
+  ["Operacao integrada", "Do site ao acompanhamento do lead, tudo conversa entre si."],
+  ["Imagem profissional", "Experiencia visual forte para transmitir autoridade desde o primeiro acesso."],
+  ["Decisao com dados", "Dashboard comercial e leitura clara do funil para agir mais rapido."],
+];
+
+const processSteps = [
+  "Mapeamos objetivos, posicionamento e gargalos comerciais.",
+  "Desenhamos estrutura, narrativa e experiencia com foco em conversao.",
+  "Implementamos site, CRM e sistema conforme a necessidade real do projeto.",
+  "Ajustamos a operacao com visibilidade, melhoria continua e acompanhamento.",
+];
+
+const pricingCards = [
+  [
+    "Landing Page Simples",
+    "R$ 499,00",
+    "SEO otimizado, botao de WhatsApp e custos de dominio e hospedagem.",
+  ],
+  [
+    "Landing Page Completa",
+    "R$ 799,00",
+    "SEO otimizado, botao de WhatsApp, dominio e hospedagem e painel CRM para leads.",
+  ],
+  [
+    "Sistemas Internos",
+    "Sob consulta",
+    "Projetos personalizados conforme fluxo, regras e necessidade operacional.",
+  ],
+  [
+    "Manutencao Mensal",
+    "R$ 150,00 / mes",
+    "Ajustes, alteracoes e acompanhamento recorrente apos a entrega.",
+  ],
+] as const;
+
+export const metadata: Metadata = createPageMetadata({
+  title: "Criacao de sites, landing pages, CRM e sistemas web",
+  description:
+    "Criacao de sites, landing pages, CRM comercial e sistemas web para empresas que querem fortalecer a presenca digital e organizar a operacao em Sao Paulo e no Brasil.",
+  path: "/",
+});
 
 export default function Home() {
+  const homeSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    serviceType: "Criacao de sites, CRM e sistemas web",
+    provider: {
+      "@type": "Organization",
+      name: siteConfig.name,
+      url: siteConfig.siteUrl,
+    },
+    areaServed: "BR",
+    url: absoluteUrl("/"),
+  };
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+    <main className="relative min-h-[100dvh] overflow-hidden bg-[#0b1220] text-slate-100">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(homeSchema) }}
+      />
+      <div className="absolute inset-0 animated-bg" />
+      <div className="relative mx-auto flex max-w-7xl flex-col gap-18 px-4 py-12 sm:px-6 sm:py-16 lg:gap-24 lg:px-10">
+        <section className="grid gap-12 pt-4 sm:pt-8 lg:grid-cols-[minmax(0,0.96fr)_minmax(540px,1.14fr)] lg:items-center lg:gap-14 lg:pt-10">
+          <div className="space-y-8">
+            <Reveal delay={50}>
+              <div className="inline-flex max-w-full items-center gap-3 rounded-full border border-cyan-500/20 bg-cyan-500/8 px-4 py-2 text-[11px] font-semibold uppercase leading-5 tracking-[0.24em] text-cyan-300 shadow-[0_12px_35px_rgba(8,145,178,0.16)] sm:max-w-fit sm:px-5 sm:py-2.5 sm:text-xs sm:tracking-[0.28em]">
+                <span className="h-2 w-2 rounded-full bg-cyan-300 shadow-[0_0_18px_rgba(103,232,249,0.9)]" />
+                Solucoes digitais com estrutura comercial real
+              </div>
+            </Reveal>
+
+            <Reveal delay={140} className="space-y-6">
+              <h1 className="max-w-3xl text-[2.65rem] font-semibold leading-[1.02] text-white sm:text-5xl xl:text-6xl">
+                Presenca premium para vender melhor e operar com muito mais controle.
+              </h1>
+              <p className="max-w-2xl text-base leading-7 text-slate-300 sm:text-lg sm:leading-8">
+                A Zen Time Pro cria sites, CRM e sistemas para empresas que querem crescer com
+                imagem forte, velocidade de atendimento e uma operacao comercial profissional em
+                Sao Paulo e em todo o Brasil.
+              </p>
+            </Reveal>
+
+            <Reveal delay={220} className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
+              <Link
+                href="/contato"
+                className="inline-flex w-full items-center justify-center rounded-full bg-gradient-to-r from-[#2563eb] via-[#2563eb] to-[#06b6d4] px-8 py-4 text-sm font-semibold text-white shadow-[0_24px_55px_rgba(37,99,235,0.35)] transition hover:-translate-y-0.5 hover:shadow-[0_30px_65px_rgba(37,99,235,0.45)] sm:w-auto"
+              >
+                Solicitar diagnostico
+              </Link>
+              <a
+                href="https://api.whatsapp.com/send?phone=5511991650950&text=Ola,%20vim%20atraves%20do%20site%20da%20Zen%20Time%20Pro%20e%20gostaria%20de%20solicitar%20um%20orcamento."
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex w-full items-center justify-center rounded-full border border-white/12 bg-white/6 px-8 py-4 text-sm font-semibold text-slate-100 transition hover:border-cyan-400/40 hover:bg-cyan-500/10 hover:text-cyan-100 sm:w-auto"
+              >
+                Falar no WhatsApp
+              </a>
+            </Reveal>
+
+            <Reveal
+              delay={300}
+              className="rounded-[2rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),rgba(255,255,255,0.03))] p-3 shadow-[0_20px_55px_rgba(2,6,23,0.2)] backdrop-blur-xl"
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+              <div className="grid gap-3 md:grid-cols-3">
+                {heroSignals.map((item, index) => (
+                  <Reveal
+                    key={item.label}
+                    delay={340 + index * 80}
+                    variant="scale"
+                    className="rounded-[1.45rem] border border-white/8 bg-[#081120]/68 px-5 py-5"
+                    as="article"
+                  >
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-cyan-300">{item.label}</p>
+                    <h3 className="mt-4 text-lg font-semibold text-white">{item.title}</h3>
+                    <p className="mt-3 text-sm leading-7 text-slate-300">{item.description}</p>
+                  </Reveal>
+                ))}
+              </div>
+            </Reveal>
+          </div>
+
+          <Reveal delay={180} variant="right" className="hero-visual-shell">
+            <div className="hero-visual-orb hero-visual-orb-left" />
+            <div className="hero-visual-orb hero-visual-orb-right" />
+
+            <div className="hero-visual-card">
+              <div className="hero-visual-topbar">
+                <div className="hero-visual-dots">
+                  <span />
+                  <span />
+                  <span />
+                </div>
+                <p>Zen Time Pro Platform</p>
+              </div>
+
+              <div className="hero-visual-image-wrap">
+                <Image
+                  src="/hero-image-1.png"
+                  alt="Ecossistema digital da Zen Time Pro"
+                  width={1460}
+                  height={1217}
+                  priority
+                  className="hero-visual-image"
+                />
+              </div>
+
+              <div className="hero-floating-card hero-floating-card-left">
+                <p className="hero-floating-label">Entrega completa</p>
+                <strong>Site + CRM + sistema</strong>
+                <span>Uma estrutura unificada para captar, atender e operar com mais consistencia.</span>
+              </div>
+
+              <div className="hero-floating-card hero-floating-card-right">
+                <p className="hero-floating-label">Direcao comercial</p>
+                <strong>Leads, pipeline e insights</strong>
+                <span>Mais clareza para identificar gargalos e mover oportunidades com rapidez.</span>
+              </div>
+            </div>
+          </Reveal>
+        </section>
+
+        <section className="grid gap-4 md:grid-cols-3">
+          {[
+            ["Atendimento mais rapido", "Resposta, triagem e acompanhamento sem perder contexto."],
+            ["Mais autoridade na marca", "Experiencia visual consistente e mais confianca no primeiro contato."],
+            ["Menos improviso comercial", "Processo organizado para equipe, leads e proximas acoes."],
+          ].map(([title, description], index) => (
+            <Reveal
+              key={title}
+              delay={index * 90}
+              variant="up"
+              className="rounded-[1.8rem] border border-white/10 bg-white/[0.04] p-6 shadow-[0_18px_45px_rgba(2,6,23,0.16)] backdrop-blur-xl"
             >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+              <p className="text-sm uppercase tracking-[0.24em] text-cyan-300">{title}</p>
+              <p className="mt-4 text-base leading-7 text-slate-300">{description}</p>
+            </Reveal>
+          ))}
+        </section>
+
+        <section className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
+          <Reveal className="space-y-6">
+            <div>
+              <p className="text-sm uppercase tracking-[0.3em] text-cyan-400">O que muda na pratica</p>
+              <h2 className="mt-4 text-3xl font-semibold text-white sm:text-4xl">Mais do que um site bonito: uma operacao com leitura clara.</h2>
+            </div>
+            <p className="max-w-2xl text-base leading-7 text-slate-300 sm:text-lg sm:leading-8">
+              Quando marca, captura e acompanhamento comercial ficam conectados, a empresa ganha mais previsibilidade,
+              mais agilidade e uma percepcao muito mais forte para o cliente.
+            </p>
+          </Reveal>
+
+          <div className="grid gap-4 sm:grid-cols-3">
+            {proofCards.map(([title, description], index) => (
+              <Reveal
+                key={title}
+                delay={80 + index * 90}
+                variant="scale"
+                className="rounded-[1.8rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.03))] p-6 backdrop-blur-xl"
+              >
+                <p className="text-base font-semibold text-white">{title}</p>
+                <p className="mt-3 text-sm leading-6 text-slate-300">{description}</p>
+              </Reveal>
+            ))}
+          </div>
+        </section>
+
+        <Reveal
+          as="section"
+          className="rounded-[2rem] border border-white/10 bg-white/[0.045] p-8 shadow-[0_24px_70px_rgba(2,6,23,0.22)] backdrop-blur-xl lg:p-10"
+        >
+          <div className="grid gap-12 lg:grid-cols-[1fr_1.05fr] lg:items-center">
+            <div className="space-y-6">
+              <div>
+                <p className="text-sm uppercase tracking-[0.3em] text-cyan-400">Metodologia</p>
+                <h2 className="mt-4 text-3xl font-semibold text-white sm:text-4xl">Projetamos a experiencia e a operacao ao mesmo tempo.</h2>
+              </div>
+
+              <div className="space-y-4">
+                {processSteps.map((step, index) => (
+                  <Reveal
+                    key={step}
+                    delay={index * 85}
+                    variant="left"
+                    className="flex items-start gap-4 rounded-[1.4rem] border border-white/8 bg-[#081120]/65 p-4"
+                  >
+                    <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-r from-[#2563eb] to-[#06b6d4] text-sm font-bold text-white">
+                      {index + 1}
+                    </div>
+                    <p className="pt-1 text-sm leading-7 text-slate-300">{step}</p>
+                  </Reveal>
+                ))}
+              </div>
+            </div>
+
+            <Reveal
+              delay={120}
+              variant="right"
+              className="overflow-hidden rounded-[1.8rem] border border-white/10 bg-[#081120]/60 p-3"
+            >
+              <Image
+                src="/hero-image-2.png"
+                alt="Painel visual da Zen Time Pro"
+                width={1460}
+                height={1217}
+                className="h-auto w-full rounded-[1.2rem] object-cover"
+              />
+            </Reveal>
+          </div>
+        </Reveal>
+
+        <section id="precos" className="space-y-10">
+          <Reveal className="space-y-4 text-center">
+            <p className="text-sm uppercase tracking-[0.3em] text-cyan-400">Modelos de entrega</p>
+            <h2 className="text-3xl font-semibold text-white sm:text-5xl">Estruturas claras para diferentes tipos de projeto.</h2>
+            <p className="mx-auto max-w-3xl text-base leading-7 text-slate-300 sm:text-lg sm:leading-8">
+              De landing pages objetivas a sistemas internos, o formato certo depende do nivel de operacao que sua empresa precisa hoje.
+            </p>
+          </Reveal>
+
+          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+            {pricingCards.map(([plan, price, tagline], index) => (
+              <Reveal
+                key={plan}
+                delay={index * 85}
+                variant="up"
+                className="rounded-[1.8rem] border border-white/10 bg-white/[0.04] p-6 backdrop-blur-xl"
+              >
+                <p className="text-sm uppercase tracking-[0.3em] text-cyan-300">{plan}</p>
+                <p className="mt-5 text-2xl font-semibold text-white">{price}</p>
+                <p className="mt-3 text-sm leading-6 text-slate-300">{tagline}</p>
+              </Reveal>
+            ))}
+          </div>
+        </section>
+
+        <Reveal
+          as="section"
+          className="rounded-[2rem] border border-white/10 bg-[radial-gradient(circle_at_top_left,rgba(34,211,238,0.18),transparent_40%),linear-gradient(180deg,rgba(8,17,32,0.92),rgba(8,17,32,0.86))] p-8 shadow-[0_24px_80px_rgba(2,6,23,0.28)] sm:p-10 lg:p-12"
+        >
+          <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
+            <div className="space-y-5">
+              <p className="text-sm uppercase tracking-[0.3em] text-cyan-300">Proximo passo</p>
+              <h2 className="max-w-3xl text-3xl font-semibold text-white sm:text-5xl">
+                Se a ideia e parecer maior, atender melhor e vender com mais estrutura, podemos comecar por aqui.
+              </h2>
+              <p className="max-w-2xl text-base leading-7 text-slate-300 sm:text-lg sm:leading-8">
+                Organizamos um diagnostico inicial para entender seu momento, o que precisa entrar primeiro e como priorizar a entrega.
+              </p>
+            </div>
+
+            <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4 lg:justify-end">
+              <Link
+                href="/contato"
+                className="inline-flex w-full items-center justify-center rounded-full bg-gradient-to-r from-[#2563eb] to-[#06b6d4] px-8 py-4 text-sm font-semibold text-white shadow-[0_24px_55px_rgba(37,99,235,0.35)] transition hover:-translate-y-0.5 sm:w-auto"
+              >
+                Solicitar proposta
+              </Link>
+              <a
+                href="https://api.whatsapp.com/send?phone=5511991650950&text=Ola,%20vim%20atraves%20do%20site%20da%20Zen%20Time%20Pro%20e%20gostaria%20de%20solicitar%20um%20orcamento."
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex w-full items-center justify-center rounded-full border border-white/12 bg-white/6 px-8 py-4 text-sm font-semibold text-white transition hover:border-cyan-300/40 hover:bg-white/10 sm:w-auto"
+              >
+                Falar no WhatsApp
+              </a>
+            </div>
+          </div>
+        </Reveal>
+      </div>
+    </main>
   );
 }

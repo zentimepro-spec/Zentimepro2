@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="Zen Time Pro logo">
+  <!-- Wrapper SVG that embeds the existing PNG as a fallback raster inside an SVG container.
+       This preserves aspect ratio and allows scaling without changing the original PNG file.
+       For a true vector conversion, provide an SVG source or a higher-res vector file. -->
+  <image href="/logooficial.png" width="512" height="512" preserveAspectRatio="xMidYMid meet" />
+</svg>

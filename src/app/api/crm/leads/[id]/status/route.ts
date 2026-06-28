@@ -25,10 +25,33 @@ export async function PATCH(
     return NextResponse.json({ error: "Status invalido." }, { status: 422 });
   }
 
+  const currentLead = await prisma.lead.findUnique({
+    where: { id },
+    select: {
+      closedAt: true,
+      id: true,
+      status: true,
+    },
+  });
+
+  if (!currentLead) {
+    return NextResponse.json({ error: "Lead nao encontrado." }, { status: 404 });
+  }
+
+  const isClosingNow =
+    nextStatus === LeadStatus.FECHADO &&
+    currentLead.status !== LeadStatus.FECHADO &&
+    !currentLead.closedAt;
+
+  const isReopeningDeal =
+    nextStatus !== LeadStatus.FECHADO &&
+    currentLead.status === LeadStatus.FECHADO;
+
   const lead = await prisma.lead.update({
     where: { id },
     data: {
       status: nextStatus as LeadStatus,
+      closedAt: isClosingNow ? new Date() : isReopeningDeal ? null : currentLead.closedAt,
       lastInteractionAt: new Date(),
       activities: {
         create: {

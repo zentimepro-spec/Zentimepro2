@@ -65,7 +65,7 @@ export function SiteHeader() {
             href="https://api.whatsapp.com/send?phone=5511991650950&text=Ola,%20vim%20atraves%20do%20site%20da%20Zen%20Time%20Pro%20e%20gostaria%20de%20solicitar%20um%20orcamento."
             target="_blank"
             rel="noreferrer"
-            className="hidden items-center rounded-full bg-gradient-to-r from-[#2563eb] to-[#06b6d4] px-5 py-2.5 text-sm font-semibold text-white shadow-[0_18px_44px_rgba(37,99,235,0.28)] transition hover:-translate-y-0.5 hover:shadow-[0_22px_54px_rgba(37,99,235,0.38)] lg:inline-flex"
+            className="hidden items-center rounded-full bg-gradient-to-r from-[#2563eb] to-[#06b6d4] px-5 py-2.5 text-sm font-semibold text-white shadow-[0_18px_44px_rgba(37,99,235,0.28)] transition hover:brightness-105 lg:inline-flex"
           >
             Falar no WhatsApp
           </Link>

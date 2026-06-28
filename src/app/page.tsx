@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
-import { Reveal } from "@/components/motion/reveal";
 import { absoluteUrl, createPageMetadata, siteConfig } from "@/lib/seo";
 
 const heroSignals = [
@@ -87,18 +86,16 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(homeSchema) }}
       />
       <div className="absolute inset-0 animated-bg" />
-      <div className="relative mx-auto flex max-w-7xl flex-col gap-18 px-4 py-12 sm:px-6 sm:py-16 lg:gap-24 lg:px-10">
-        <section className="grid gap-12 pt-4 sm:pt-8 lg:grid-cols-[minmax(0,0.96fr)_minmax(540px,1.14fr)] lg:items-center lg:gap-14 lg:pt-10">
-          <div className="space-y-8">
-            <Reveal delay={50}>
-              <div className="inline-flex max-w-full items-center gap-3 rounded-full border border-cyan-500/20 bg-cyan-500/8 px-4 py-2 text-[11px] font-semibold uppercase leading-5 tracking-[0.24em] text-cyan-300 shadow-[0_12px_35px_rgba(8,145,178,0.16)] sm:max-w-fit sm:px-5 sm:py-2.5 sm:text-xs sm:tracking-[0.28em]">
-                <span className="h-2 w-2 rounded-full bg-cyan-300 shadow-[0_0_18px_rgba(103,232,249,0.9)]" />
-                Solucoes digitais com estrutura comercial real
-              </div>
-            </Reveal>
+      <div className="relative mx-auto flex max-w-7xl flex-col gap-14 px-4 py-10 sm:px-6 sm:py-14 lg:gap-18 lg:px-10">
+        <section className="grid gap-8 pt-2 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:items-center lg:gap-10 lg:pt-6">
+          <div className="space-y-7">
+            <div className="inline-flex max-w-full items-center gap-3 rounded-full border border-cyan-500/20 bg-cyan-500/8 px-4 py-2 text-[11px] font-semibold uppercase leading-5 tracking-[0.24em] text-cyan-300 shadow-[0_12px_35px_rgba(8,145,178,0.16)] sm:max-w-fit sm:px-5 sm:py-2.5 sm:text-xs sm:tracking-[0.28em]">
+              <span className="h-2 w-2 rounded-full bg-cyan-300 shadow-[0_0_18px_rgba(103,232,249,0.9)]" />
+              Solucoes digitais com estrutura comercial real
+            </div>
 
-            <Reveal delay={140} className="space-y-6">
-              <h1 className="max-w-3xl text-[2.65rem] font-semibold leading-[1.02] text-white sm:text-5xl xl:text-6xl">
+            <div className="space-y-5">
+              <h1 className="max-w-3xl text-[2.5rem] font-semibold leading-[0.98] text-white sm:text-5xl xl:text-[4.1rem]">
                 Presenca premium para vender melhor e operar com muito mais controle.
               </h1>
               <p className="max-w-2xl text-base leading-7 text-slate-300 sm:text-lg sm:leading-8">
@@ -106,12 +103,12 @@ export default function Home() {
                 imagem forte, velocidade de atendimento e uma operacao comercial profissional em
                 Sao Paulo e em todo o Brasil.
               </p>
-            </Reveal>
+            </div>
 
-            <Reveal delay={220} className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
               <Link
                 href="/contato"
-                className="inline-flex w-full items-center justify-center rounded-full bg-gradient-to-r from-[#2563eb] via-[#2563eb] to-[#06b6d4] px-8 py-4 text-sm font-semibold text-white shadow-[0_24px_55px_rgba(37,99,235,0.35)] transition hover:-translate-y-0.5 hover:shadow-[0_30px_65px_rgba(37,99,235,0.45)] sm:w-auto"
+                className="inline-flex w-full items-center justify-center rounded-full bg-gradient-to-r from-[#2563eb] via-[#2563eb] to-[#06b6d4] px-8 py-4 text-sm font-semibold text-white shadow-[0_24px_55px_rgba(37,99,235,0.35)] sm:w-auto"
               >
                 Solicitar diagnostico
               </Link>
@@ -119,38 +116,29 @@ export default function Home() {
                 href="https://api.whatsapp.com/send?phone=5511991650950&text=Ola,%20vim%20atraves%20do%20site%20da%20Zen%20Time%20Pro%20e%20gostaria%20de%20solicitar%20um%20orcamento."
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex w-full items-center justify-center rounded-full border border-white/12 bg-white/6 px-8 py-4 text-sm font-semibold text-slate-100 transition hover:border-cyan-400/40 hover:bg-cyan-500/10 hover:text-cyan-100 sm:w-auto"
+                className="inline-flex w-full items-center justify-center rounded-full border border-white/12 bg-white/6 px-8 py-4 text-sm font-semibold text-slate-100 sm:w-auto"
               >
                 Falar no WhatsApp
               </a>
-            </Reveal>
+            </div>
 
-            <Reveal
-              delay={300}
-              className="rounded-[2rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),rgba(255,255,255,0.03))] p-3 shadow-[0_20px_55px_rgba(2,6,23,0.2)] backdrop-blur-xl"
-            >
-              <div className="grid gap-3 md:grid-cols-3">
-                {heroSignals.map((item, index) => (
-                  <Reveal
-                    key={item.label}
-                    delay={340 + index * 80}
-                    variant="scale"
-                    className="rounded-[1.45rem] border border-white/8 bg-[#081120]/68 px-5 py-5"
-                    as="article"
-                  >
-                    <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-cyan-300">{item.label}</p>
-                    <h3 className="mt-4 text-lg font-semibold text-white">{item.title}</h3>
-                    <p className="mt-3 text-sm leading-7 text-slate-300">{item.description}</p>
-                  </Reveal>
-                ))}
-              </div>
-            </Reveal>
+            <div className="grid gap-3 sm:grid-cols-3">
+              {heroSignals.map((item) => (
+                <article
+                  key={item.label}
+                  className="rounded-[1.45rem] border border-white/8 bg-[#081120]/68 px-5 py-5"
+                >
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-cyan-300">
+                    {item.label}
+                  </p>
+                  <h3 className="mt-4 text-lg font-semibold text-white">{item.title}</h3>
+                  <p className="mt-3 text-sm leading-7 text-slate-300">{item.description}</p>
+                </article>
+              ))}
+            </div>
           </div>
 
-          <Reveal delay={180} variant="right" className="hero-visual-shell">
-            <div className="hero-visual-orb hero-visual-orb-left" />
-            <div className="hero-visual-orb hero-visual-orb-right" />
-
+          <div className="hero-visual-shell">
             <div className="hero-visual-card">
               <div className="hero-visual-topbar">
                 <div className="hero-visual-dots">
@@ -172,19 +160,29 @@ export default function Home() {
                 />
               </div>
 
-              <div className="hero-floating-card hero-floating-card-left">
-                <p className="hero-floating-label">Entrega completa</p>
-                <strong>Site + CRM + sistema</strong>
-                <span>Uma estrutura unificada para captar, atender e operar com mais consistencia.</span>
-              </div>
+              <div className="grid gap-3 border-t border-white/8 px-4 py-4 sm:grid-cols-2 sm:px-5">
+                <div className="rounded-[1.15rem] border border-white/10 bg-[#081120]/76 px-4 py-4">
+                  <p className="hero-floating-label">Entrega completa</p>
+                  <strong className="mt-3 block text-[1rem] leading-6 text-white">
+                    Site + CRM + sistema
+                  </strong>
+                  <span className="mt-2 block text-sm leading-6 text-slate-300">
+                    Estrutura unificada para captar, atender e operar com mais consistencia.
+                  </span>
+                </div>
 
-              <div className="hero-floating-card hero-floating-card-right">
-                <p className="hero-floating-label">Direcao comercial</p>
-                <strong>Leads, pipeline e insights</strong>
-                <span>Mais clareza para identificar gargalos e mover oportunidades com rapidez.</span>
+                <div className="rounded-[1.15rem] border border-white/10 bg-[#081120]/76 px-4 py-4">
+                  <p className="hero-floating-label">Direcao comercial</p>
+                  <strong className="mt-3 block text-[1rem] leading-6 text-white">
+                    Leads, pipeline e insights
+                  </strong>
+                  <span className="mt-2 block text-sm leading-6 text-slate-300">
+                    Mais clareza para identificar gargalos e mover oportunidades com rapidez.
+                  </span>
+                </div>
               </div>
             </div>
-          </Reveal>
+          </div>
         </section>
 
         <section className="grid gap-4 md:grid-cols-3">
@@ -192,79 +190,70 @@ export default function Home() {
             ["Atendimento mais rapido", "Resposta, triagem e acompanhamento sem perder contexto."],
             ["Mais autoridade na marca", "Experiencia visual consistente e mais confianca no primeiro contato."],
             ["Menos improviso comercial", "Processo organizado para equipe, leads e proximas acoes."],
-          ].map(([title, description], index) => (
-            <Reveal
+          ].map(([title, description]) => (
+            <div
               key={title}
-              delay={index * 90}
-              variant="up"
               className="rounded-[1.8rem] border border-white/10 bg-white/[0.04] p-6 shadow-[0_18px_45px_rgba(2,6,23,0.16)] backdrop-blur-xl"
             >
               <p className="text-sm uppercase tracking-[0.24em] text-cyan-300">{title}</p>
               <p className="mt-4 text-base leading-7 text-slate-300">{description}</p>
-            </Reveal>
+            </div>
           ))}
         </section>
 
-        <section className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
-          <Reveal className="space-y-6">
+        <section className="grid gap-6 lg:grid-cols-[0.94fr_1.06fr] lg:items-start">
+          <div className="space-y-6">
             <div>
               <p className="text-sm uppercase tracking-[0.3em] text-cyan-400">O que muda na pratica</p>
-              <h2 className="mt-4 text-3xl font-semibold text-white sm:text-4xl">Mais do que um site bonito: uma operacao com leitura clara.</h2>
+              <h2 className="mt-4 text-3xl font-semibold text-white sm:text-4xl">
+                Mais do que um site bonito: uma operacao com leitura clara.
+              </h2>
             </div>
             <p className="max-w-2xl text-base leading-7 text-slate-300 sm:text-lg sm:leading-8">
-              Quando marca, captura e acompanhamento comercial ficam conectados, a empresa ganha mais previsibilidade,
-              mais agilidade e uma percepcao muito mais forte para o cliente.
+              Quando marca, captura e acompanhamento comercial ficam conectados, a empresa ganha mais
+              previsibilidade, mais agilidade e uma percepcao muito mais forte para o cliente.
             </p>
-          </Reveal>
+          </div>
 
           <div className="grid gap-4 sm:grid-cols-3">
-            {proofCards.map(([title, description], index) => (
-              <Reveal
+            {proofCards.map(([title, description]) => (
+              <div
                 key={title}
-                delay={80 + index * 90}
-                variant="scale"
                 className="rounded-[1.8rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.03))] p-6 backdrop-blur-xl"
               >
                 <p className="text-base font-semibold text-white">{title}</p>
                 <p className="mt-3 text-sm leading-6 text-slate-300">{description}</p>
-              </Reveal>
+              </div>
             ))}
           </div>
         </section>
 
-        <Reveal
-          as="section"
-          className="rounded-[2rem] border border-white/10 bg-white/[0.045] p-8 shadow-[0_24px_70px_rgba(2,6,23,0.22)] backdrop-blur-xl lg:p-10"
-        >
-          <div className="grid gap-12 lg:grid-cols-[1fr_1.05fr] lg:items-center">
+        <section className="rounded-[2rem] border border-white/10 bg-white/[0.045] p-6 shadow-[0_24px_70px_rgba(2,6,23,0.22)] backdrop-blur-xl lg:p-8">
+          <div className="grid gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">
             <div className="space-y-6">
               <div>
                 <p className="text-sm uppercase tracking-[0.3em] text-cyan-400">Metodologia</p>
-                <h2 className="mt-4 text-3xl font-semibold text-white sm:text-4xl">Projetamos a experiencia e a operacao ao mesmo tempo.</h2>
+                <h2 className="mt-4 text-3xl font-semibold text-white sm:text-4xl">
+                  Projetamos a experiencia e a operacao ao mesmo tempo.
+                </h2>
               </div>
 
               <div className="space-y-4">
                 {processSteps.map((step, index) => (
-                  <Reveal
+                  <div
                     key={step}
-                    delay={index * 85}
-                    variant="left"
                     className="flex items-start gap-4 rounded-[1.4rem] border border-white/8 bg-[#081120]/65 p-4"
                   >
                     <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-r from-[#2563eb] to-[#06b6d4] text-sm font-bold text-white">
                       {index + 1}
                     </div>
                     <p className="pt-1 text-sm leading-7 text-slate-300">{step}</p>
-                  </Reveal>
+                  </div>
                 ))}
               </div>
             </div>
 
-            <Reveal
-              delay={120}
-              variant="right"
-              className="overflow-hidden rounded-[1.8rem] border border-white/10 bg-[#081120]/60 p-3"
-            >
+            <div className="overflow-hidden rounded-[1.8rem] border border-white/10 bg-[#081120]/60 p-2.5">
               <Image
                 src="/hero-image-2.png"
                 alt="Painel visual da Zen Time Pro"
@@ -272,54 +261,54 @@ export default function Home() {
                 height={1217}
                 className="h-auto w-full rounded-[1.2rem] object-cover"
               />
-            </Reveal>
+            </div>
           </div>
-        </Reveal>
+        </section>
 
         <section id="precos" className="space-y-10">
-          <Reveal className="space-y-4 text-center">
+          <div className="space-y-4 text-center">
             <p className="text-sm uppercase tracking-[0.3em] text-cyan-400">Modelos de entrega</p>
-            <h2 className="text-3xl font-semibold text-white sm:text-5xl">Estruturas claras para diferentes tipos de projeto.</h2>
+            <h2 className="text-3xl font-semibold text-white sm:text-5xl">
+              Estruturas claras para diferentes tipos de projeto.
+            </h2>
             <p className="mx-auto max-w-3xl text-base leading-7 text-slate-300 sm:text-lg sm:leading-8">
-              De landing pages objetivas a sistemas internos, o formato certo depende do nivel de operacao que sua empresa precisa hoje.
+              De landing pages objetivas a sistemas internos, o formato certo depende do nivel de
+              operacao que sua empresa precisa hoje.
             </p>
-          </Reveal>
+          </div>
 
           <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-            {pricingCards.map(([plan, price, tagline], index) => (
-              <Reveal
+            {pricingCards.map(([plan, price, tagline]) => (
+              <div
                 key={plan}
-                delay={index * 85}
-                variant="up"
                 className="rounded-[1.8rem] border border-white/10 bg-white/[0.04] p-6 backdrop-blur-xl"
               >
                 <p className="text-sm uppercase tracking-[0.3em] text-cyan-300">{plan}</p>
                 <p className="mt-5 text-2xl font-semibold text-white">{price}</p>
                 <p className="mt-3 text-sm leading-6 text-slate-300">{tagline}</p>
-              </Reveal>
+              </div>
             ))}
           </div>
         </section>
 
-        <Reveal
-          as="section"
-          className="rounded-[2rem] border border-white/10 bg-[radial-gradient(circle_at_top_left,rgba(34,211,238,0.18),transparent_40%),linear-gradient(180deg,rgba(8,17,32,0.92),rgba(8,17,32,0.86))] p-8 shadow-[0_24px_80px_rgba(2,6,23,0.28)] sm:p-10 lg:p-12"
-        >
+        <section className="rounded-[2rem] border border-white/10 bg-[radial-gradient(circle_at_top_left,rgba(34,211,238,0.18),transparent_40%),linear-gradient(180deg,rgba(8,17,32,0.92),rgba(8,17,32,0.86))] p-8 shadow-[0_24px_80px_rgba(2,6,23,0.28)] sm:p-10 lg:p-12">
           <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
             <div className="space-y-5">
               <p className="text-sm uppercase tracking-[0.3em] text-cyan-300">Proximo passo</p>
               <h2 className="max-w-3xl text-3xl font-semibold text-white sm:text-5xl">
-                Se a ideia e parecer maior, atender melhor e vender com mais estrutura, podemos comecar por aqui.
+                Se a ideia e parecer maior, atender melhor e vender com mais estrutura, podemos
+                comecar por aqui.
               </h2>
               <p className="max-w-2xl text-base leading-7 text-slate-300 sm:text-lg sm:leading-8">
-                Organizamos um diagnostico inicial para entender seu momento, o que precisa entrar primeiro e como priorizar a entrega.
+                Organizamos um diagnostico inicial para entender seu momento, o que precisa entrar
+                primeiro e como priorizar a entrega.
               </p>
             </div>
 
             <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4 lg:justify-end">
               <Link
                 href="/contato"
-                className="inline-flex w-full items-center justify-center rounded-full bg-gradient-to-r from-[#2563eb] to-[#06b6d4] px-8 py-4 text-sm font-semibold text-white shadow-[0_24px_55px_rgba(37,99,235,0.35)] transition hover:-translate-y-0.5 sm:w-auto"
+                className="inline-flex w-full items-center justify-center rounded-full bg-gradient-to-r from-[#2563eb] to-[#06b6d4] px-8 py-4 text-sm font-semibold text-white shadow-[0_24px_55px_rgba(37,99,235,0.35)] sm:w-auto"
               >
                 Solicitar proposta
               </Link>
@@ -327,13 +316,13 @@ export default function Home() {
                 href="https://api.whatsapp.com/send?phone=5511991650950&text=Ola,%20vim%20atraves%20do%20site%20da%20Zen%20Time%20Pro%20e%20gostaria%20de%20solicitar%20um%20orcamento."
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex w-full items-center justify-center rounded-full border border-white/12 bg-white/6 px-8 py-4 text-sm font-semibold text-white transition hover:border-cyan-300/40 hover:bg-white/10 sm:w-auto"
+                className="inline-flex w-full items-center justify-center rounded-full border border-white/12 bg-white/6 px-8 py-4 text-sm font-semibold text-white sm:w-auto"
               >
                 Falar no WhatsApp
               </a>
             </div>
           </div>
-        </Reveal>
+        </section>
       </div>
     </main>
   );

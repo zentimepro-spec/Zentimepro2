@@ -44,6 +44,7 @@ enum ActivityType {
   OWNER_CHANGED
   CONTACTED
   PROPOSAL_SENT
+  FINANCIAL_UPDATED
 }
 
 model User {
@@ -59,6 +60,7 @@ model User {
   assignedLeads Lead[]         @relation("LeadOwner")
   notes         LeadNote[]
   activities    LeadActivity[]
+  monthlyGoals  UserMonthlyGoal[]
 }
 
 model Lead {
@@ -76,7 +78,9 @@ model Lead {
   internalNotes     String?
   lostReason        String?
   budgetValue       Decimal?       @db.Decimal(10, 2)
+  closedServiceValue Decimal?      @db.Decimal(10, 2)
   contactedAt       DateTime?
+  closedAt          DateTime?
   lastInteractionAt DateTime?
   nextAction        String?
   nextActionAt      DateTime?
@@ -86,12 +90,15 @@ model Lead {
   assignedTo        User?          @relation("LeadOwner", fields: [assignedToId], references: [id], onDelete: SetNull)
   notes             LeadNote[]
   activities        LeadActivity[]
+  additions         LeadAddition[]
 
   @@index([status, createdAt])
+  @@index([status, closedAt])
   @@index([source, createdAt])
   @@index([servico, createdAt])
   @@index([priority, createdAt])
   @@index([assignedToId])
+  @@index([closedAt])
 }
 
 model LeadNote {
@@ -119,4 +126,30 @@ model LeadActivity {
 
   @@index([leadId, createdAt])
   @@index([actorId])
+}
+
+model LeadAddition {
+  id          String   @id @default(cuid())
+  leadId       String
+  description String
+  amount      Decimal  @db.Decimal(10, 2)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  lead        Lead     @relation(fields: [leadId], references: [id], onDelete: Cascade)
+
+  @@index([leadId, createdAt])
+}
+
+model UserMonthlyGoal {
+  id           String   @id @default(cuid())
+  userId       String
+  monthDate    DateTime
+  revenueGoal  Decimal? @db.Decimal(10, 2)
+  wonLeadsGoal Int?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, monthDate])
+  @@index([monthDate])
 }

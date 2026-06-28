@@ -51,7 +51,7 @@ export function CrmStatusSelect({
         value={status}
         disabled={isPending}
         onChange={(event) => void updateStatus(event.target.value)}
-        className="w-full rounded-xl border border-white/10 bg-[#081120] px-3 py-2 text-sm text-slate-100 outline-none transition focus:border-cyan-500/40"
+        className="w-full rounded-xl border border-white/10 bg-[#081120] px-3 py-3 text-sm text-slate-100 outline-none transition focus:border-cyan-500/40"
       >
         {options.map((option) => (
           <option key={option.value} value={option.value}>

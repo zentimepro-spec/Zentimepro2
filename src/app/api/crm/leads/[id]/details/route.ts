@@ -32,6 +32,8 @@ export async function POST(
   const sourceDetail = String(formData.get("sourceDetail") ?? "").trim();
   const priorityRaw = String(formData.get("priority") ?? "").trim();
   const budgetValueRaw = String(formData.get("budgetValue") ?? "").trim();
+  const closedServiceValueRaw = String(formData.get("closedServiceValue") ?? "").trim();
+  const closedAtRaw = String(formData.get("closedAt") ?? "").trim();
   const lostReason = String(formData.get("lostReason") ?? "").trim();
   const internalNotes = String(formData.get("internalNotes") ?? "").trim();
   const nextAction = String(formData.get("nextAction") ?? "").trim();
@@ -39,6 +41,7 @@ export async function POST(
 
   const assignedToId = assignedToIdRaw || null;
   const nextActionAt = nextActionAtRaw ? new Date(nextActionAtRaw) : null;
+  const closedAt = closedAtRaw ? new Date(closedAtRaw) : null;
   const source = leadSourceValues.has(sourceRaw as LeadSource)
     ? (sourceRaw as LeadSource)
     : LeadSource.SITE;
@@ -46,6 +49,9 @@ export async function POST(
     ? (priorityRaw as LeadPriority)
     : LeadPriority.MEDIA;
   const budgetValue = budgetValueRaw ? Number(budgetValueRaw.replace(",", ".")) : null;
+  const closedServiceValue = closedServiceValueRaw
+    ? Number(closedServiceValueRaw.replace(",", "."))
+    : null;
 
   if (!nome || !empresa || !telefone || !email || !servico) {
     return NextResponse.redirect(new URL(`/crm/leads/${id}?detailsError=2`, request.url), {
@@ -65,6 +71,21 @@ export async function POST(
     });
   }
 
+  if (
+    closedServiceValueRaw &&
+    (closedServiceValue === null || Number.isNaN(closedServiceValue) || closedServiceValue < 0)
+  ) {
+    return NextResponse.redirect(new URL(`/crm/leads/${id}?detailsError=4`, request.url), {
+      status: 303,
+    });
+  }
+
+  if (closedAt && Number.isNaN(closedAt.getTime())) {
+    return NextResponse.redirect(new URL(`/crm/leads/${id}?detailsError=5`, request.url), {
+      status: 303,
+    });
+  }
+
   const currentLead = await prisma.lead.findUnique({
     where: { id },
     select: {
@@ -78,6 +99,8 @@ export async function POST(
       assignedToId: true,
       priority: true,
       budgetValue: true,
+      closedServiceValue: true,
+      closedAt: true,
       lostReason: true,
       internalNotes: true,
       nextAction: true,
@@ -117,6 +140,14 @@ export async function POST(
     activityMessages.push("Orcamento estimado foi atualizado.");
   }
 
+  if ((currentLead.closedServiceValue?.toNumber() ?? null) !== closedServiceValue) {
+    activityMessages.push("Valor fechado do servico foi atualizado.");
+  }
+
+  if ((currentLead.closedAt?.toISOString() ?? "") !== (closedAt?.toISOString() ?? "")) {
+    activityMessages.push("Data de fechamento foi atualizada.");
+  }
+
   if ((currentLead.lostReason ?? "") !== lostReason) {
     activityMessages.push("Motivo de perda foi atualizado.");
   }
@@ -142,6 +173,8 @@ export async function POST(
       assignedToId,
       priority,
       budgetValue: budgetValue === null ? null : budgetValue,
+      closedServiceValue: closedServiceValue === null ? null : closedServiceValue,
+      closedAt,
       lostReason: lostReason || null,
       internalNotes: internalNotes || null,
       nextAction: nextAction || null,
@@ -150,7 +183,9 @@ export async function POST(
       activities: activityMessages.length
         ? {
             create: activityMessages.map((description) => ({
-              type: "OWNER_CHANGED",
+              type: description.includes("Valor fechado") || description.includes("Data de fechamento")
+                ? "FINANCIAL_UPDATED"
+                : "OWNER_CHANGED",
               description,
               actorId: session.sub,
             })),

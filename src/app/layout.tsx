@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 
 import { SiteFooter } from "./components/SiteFooter";
 import { SiteHeader } from "./components/SiteHeader";
@@ -89,6 +90,7 @@ export default function RootLayout({
         <SiteHeader />
         <div className="min-h-[calc(100dvh-6rem)] min-h-[calc(100vh-6rem)]">{children}</div>
         <SiteFooter />
+        <Analytics />
       </body>
     </html>
   );

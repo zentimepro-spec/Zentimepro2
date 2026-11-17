@@ -6,13 +6,13 @@ import { createPageMetadata } from "@/lib/seo";
 
 const plans = [
   {
-    name: "Landing Page Simples",
-    price: "R$ 499,00",
-    summary: "Presenca digital objetiva para captacao rapida.",
+    name: "Black Friday — Site simples ou Landing Page",
+    price: "R$ 297,00",
+    summary: "Preço especial de Black Friday para apresentar seu negócio e facilitar o contato de novos clientes.",
     items: [
-      "Taxas de registro de dominio e hospedagem",
-      "SEO otimizado",
-      "Botao de WhatsApp",
+      "Domínio e hospedagem com condições alinhadas na proposta",
+      "Layout adaptado ao celular e ao computador",
+      "Botão direto para WhatsApp",
     ],
   },
   {

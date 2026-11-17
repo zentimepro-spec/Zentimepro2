@@ -1,9 +1,9 @@
 import Link from "next/link";
 
 const navigation = [
-  ["Servicos", "/servicos"],
-  ["Portfolio", "/portfolio"],
-  ["Precos", "/precos"],
+  ["Serviços", "/servicos"],
+  ["Portfólio", "/portfolio"],
+  ["Preços", "/precos"],
   ["Sobre", "/sobre"],
   ["Contato", "/contato"],
 ] as const;
@@ -18,18 +18,19 @@ export function SiteFooter() {
               Zen Time Pro
             </p>
             <h2 className="mt-3 max-w-md text-xl font-semibold text-white sm:text-2xl">
-              Presenca digital, operacao comercial e tecnologia com nivel profissional.
+              Presença digital, operação comercial e tecnologia com nível
+              profissional.
             </h2>
           </div>
           <p className="max-w-xl text-sm leading-7 text-slate-400">
-            Estruturamos sites, CRM e sistemas para empresas que querem melhorar percepcao de marca,
-            organizacao comercial e conversao.
+            Estruturamos sites, CRM e sistemas para empresas que querem melhorar
+            percepção de marca, organização comercial e conversão.
           </p>
         </div>
 
         <div className="space-y-4">
           <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">
-            Navegacao
+            Navegação
           </p>
           <div className="flex flex-col gap-3">
             {navigation.map(([label, href]) => (
@@ -75,7 +76,10 @@ export function SiteFooter() {
 
       <div className="mx-auto mt-12 flex max-w-7xl flex-col gap-4 border-t border-white/8 pt-6 text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between">
         <p>© 2026 Zen Time Pro. Todos os direitos reservados.</p>
-        <p>Desenvolvimento, CRM e sistemas com foco em conversao e clareza operacional.</p>
+        <p>
+          Desenvolvimento, CRM e sistemas com foco em conversão e clareza
+          operacional.
+        </p>
       </div>
     </footer>
   );

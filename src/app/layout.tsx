@@ -87,7 +87,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
         <SiteHeader />
-        <div className="min-h-[calc(100dvh-6rem)] min-h-[calc(100vh-6rem)]">{children}</div>
+        <div id="site-content" tabIndex={-1} className="min-h-[calc(100dvh-6rem)] min-h-[calc(100vh-6rem)]">{children}</div>
         <SiteFooter />
       </body>
     </html>

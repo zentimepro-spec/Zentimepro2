@@ -41,6 +41,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 105px;
 }
 
 body {
@@ -291,4 +292,8 @@ svg {
     display: grid;
     gap: 0.75rem;
   }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
 }

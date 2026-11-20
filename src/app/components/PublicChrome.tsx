@@ -4,7 +4,6 @@ import { usePathname } from "next/navigation";
 import type { ReactNode } from "react";
 
 import { ZenAssistant } from "./ZenAssistant";
-import { CursorFX } from "./CursorFX";
 
 export function PublicChrome({ children, header, footer }: { children: ReactNode; header: ReactNode; footer: ReactNode }) {
   const path = usePathname() || "/";
@@ -18,7 +17,6 @@ export function PublicChrome({ children, header, footer }: { children: ReactNode
       <div className="studio-root">{children}</div>
       {footer}
       <ZenAssistant />
-      <CursorFX />
     </>
   );
 }

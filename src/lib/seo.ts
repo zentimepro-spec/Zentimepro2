@@ -5,7 +5,7 @@ export const siteConfig = {
   shortName: "Zen Time Pro",
   description:
     "Zen Time Pro entrega sites, landing pages, CRM, sistemas web e infraestrutura digital para empresas que valorizam tempo e resultados.",
-  siteUrl: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
+  siteUrl: process.env.NEXT_PUBLIC_SITE_URL ?? "https://zentimepro.com.br",
   ogImage: "/portfolio-showcase.png",
   email: "zentimepro@gmail.com",
   phone: "+55 (11) 99165-0950",

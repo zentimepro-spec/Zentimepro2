@@ -85,7 +85,7 @@ export function ProjectGallery() {
             <div className="studio-gallery-private"><span className="studio-gallery-private-icon">◈</span><h3>Projeto com acesso restrito</h3><p>Não exibimos páginas internas, dados operacionais ou informações de terceiros. Conheça a apresentação pública no link abaixo.</p></div>
           )}
         </div>
-        <p className="studio-gallery-notice">{screenshot ? "Captura real gravada e disponibilizada no repositório." : project.access === "public" ? "Visualização ao vivo do endereço público. Alguns sites podem bloquear incorporação; use o link para abrir o original." : "Visualização interna não disponibilizada por privacidade."}</p>
+        <p className="studio-gallery-notice">{screenshot ? (project.id === "musas" ? "Captura real da campanha Black Friday de novembro de 2026. As ofertas exibidas na imagem são históricas; consulte o projeto para condições atuais." : "Captura real enviada pelo responsável pelo projeto e incluída no portfólio.") : project.access === "public" ? "Visualização ao vivo do endereço público. Alguns sites podem bloquear incorporação; use o link para abrir o original." : "Visualização interna não disponibilizada por privacidade."}</p>
       </div>
       <div className="studio-gallery-summary">
         <div><span className="studio-overline"><span className="studio-overline-index">/CASE</span>{project.category}</span><h3>{project.tagline}</h3><p>{project.description}</p><div className="studio-chip-row">{project.tools.map(t=><span className="studio-chip" key={t}>{t}</span>)}</div></div>

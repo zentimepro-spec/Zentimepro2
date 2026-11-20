@@ -12,7 +12,9 @@
     "prisma:migrate:dev": "prisma migrate dev",
     "prisma:migrate:deploy": "prisma migrate deploy",
     "prisma:studio": "prisma studio",
-    "crm:bootstrap-admin": "tsx scripts/bootstrap-crm-admin.ts"
+    "crm:bootstrap-admin": "tsx scripts/bootstrap-crm-admin.ts",
+    "test:zen": "node --experimental-strip-types scripts/check-zen.mjs",
+    "portfolio:capture": "node scripts/capture-portfolio.mjs"
   },
   "dependencies": {
     "@prisma/adapter-pg": "^7.8.0",

@@ -1,0 +1,13 @@
+{
+  "name": "zen-assistant-api",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-11-01",
+  "ai": {
+    "binding": "AI"
+  },
+  "observability": {
+    "enabled": false
+  },
+  "account_id": "2f4b2f7fdd7ebe21b581511b4b3192a8",
+  "workers_dev": true
+}

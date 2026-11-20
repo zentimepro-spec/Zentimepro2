@@ -1,0 +1,11 @@
+{
+  "foncare": {
+    "desktop": "/portfolio-foncare.png"
+  },
+  "zentable": {
+    "desktop": "/portfolio/zentable-desktop.avif"
+  },
+  "musas": {
+    "desktop": "/portfolio/musas-desktop.avif"
+  }
+}

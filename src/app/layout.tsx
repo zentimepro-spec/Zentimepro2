@@ -1,9 +1,13 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 
-import { SiteFooter } from "./components/SiteFooter";
+import { PublicChrome } from "./components/PublicChrome";
 import { SiteHeader } from "./components/SiteHeader";
+import { SiteFooter } from "./components/SiteFooter";
 import "./globals.css";
+import "./studio.css";
+import "./zen.css";
+import "./studio-pages.css";
 import { absoluteUrl, siteConfig } from "@/lib/seo";
 
 const poppins = Poppins({
@@ -86,9 +90,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
-        <SiteHeader />
-        <div className="min-h-[calc(100dvh-6rem)] min-h-[calc(100vh-6rem)]">{children}</div>
-        <SiteFooter />
+        <PublicChrome header={<SiteHeader />} footer={<SiteFooter />}>{children}</PublicChrome>
       </body>
     </html>
   );

@@ -1,3 +1,4 @@
+import { ServiceDetailDemo } from "@/app/components/ServiceExperience";
 import type { Metadata } from "next";
 import Link from "next/link";
 
@@ -80,7 +81,7 @@ export default function CrmComercialServicePage() {
   };
 
   return (
-    <main className="mx-auto min-h-[100dvh] max-w-6xl px-4 py-14 sm:px-6 sm:py-20 lg:px-10">
+    <main className="mx-auto studio-detail-page min-h-[100dvh] max-w-6xl px-4 py-14 sm:px-6 sm:py-20 lg:px-10">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
@@ -100,6 +101,8 @@ export default function CrmComercialServicePage() {
           informacoes, entender o funil e reduzir improviso no atendimento.
         </p>
       </section>
+      <ServiceDetailDemo slug="crm-comercial" />
+
 
       <section className="mt-14 grid gap-6 lg:grid-cols-2">
         <div className="rounded-[2rem] border border-white/10 bg-white/[0.045] p-8 shadow-[0_24px_70px_rgba(2,6,23,0.22)] backdrop-blur-xl">

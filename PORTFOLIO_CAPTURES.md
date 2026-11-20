@@ -2,7 +2,7 @@
 
 ## O que está disponível hoje
 - Foncare: captura real já presente em `public/portfolio-foncare.png`.
-- Zentable e Promo das Musas: a galeria utiliza uma visualização ao vivo dos sites públicos via iframe, com acesso direto ao endereço original. O embed pode ser impedido por `X-Frame-Options` ou CSP; não há imagem inventada.
+- Zentable: captura real fornecida pelo responsável pelo projeto, em `public/portfolio/zentable-desktop.avif` (imagem otimizada, 1200 px).\n- Promo das Musas: captura real fornecida pelo responsável pelo projeto, em `public/portfolio/musas-desktop.avif` (imagem otimizada, 1200 px). A imagem retrata uma campanha de Black Friday e não comprova que a oferta continua válida.\n- As prévias mobile continuam em visualização pública via iframe até que capturas reais específicas para celular sejam aprovadas. O embed pode ser impedido por `X-Frame-Options` ou CSP.
 - TFA Operacional: somente resumo e link de acesso, sem expor telas internas.
 
 ## Como gerar as capturas reais

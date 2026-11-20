@@ -54,7 +54,7 @@ const projects = [
     url: "https://www.zentable.com.br",
     number: "02",
     theme: "zentable",
-    image: null,
+    image: "/portfolio/zentable-desktop.avif",
   },
   {
     name: "Promo das Musas",
@@ -63,7 +63,7 @@ const projects = [
     url: "https://promodasmusas.vercel.app",
     number: "03",
     theme: "musas",
-    image: null,
+    image: "/portfolio/musas-desktop.avif",
   },
   {
     name: "TFA Operacional",

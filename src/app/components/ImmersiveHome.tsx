@@ -152,6 +152,7 @@ function ProjectPreview({ project }: { project: (typeof projects)[number] }) {
               <span className="ztp-project-mock-pill">Explorar projeto</span>
             </div>
             <div className="ztp-project-mock-footer"><span /><span /><span /></div>
+            <span className="ztp-project-mock-disclaimer">Prévia conceitual · visite o projeto real</span>
           </div>
         )}
       </div>
@@ -337,16 +338,7 @@ function ConsultationDialog({ open, onClose }: { open: boolean; onClose: () => v
 export function ImmersiveHome() {
   const [assistantOpen, setAssistantOpen] = useState(false);
   const [commandsOpen, setCommandsOpen] = useState(false);
-  const [motionAllowed, setMotionAllowed] = useState(true);
   const mainRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const sync = () => setMotionAllowed(!media.matches);
-    sync();
-    media.addEventListener("change", sync);
-    return () => media.removeEventListener("change", sync);
-  }, []);
 
   useEffect(() => {
     const root = mainRef.current;
@@ -382,7 +374,7 @@ export function ImmersiveHome() {
   const showAssistant = () => setAssistantOpen(true);
 
   return (
-    <main ref={mainRef} className={"ztp-home" + (!motionAllowed ? " ztp-reduced-motion" : "")}>
+    <main ref={mainRef} className="ztp-home">
       <div className="ztp-ambient ztp-ambient-one" aria-hidden="true" />
       <div className="ztp-ambient ztp-ambient-two" aria-hidden="true" />
       <section className="ztp-hero" aria-labelledby="ztp-hero-title">

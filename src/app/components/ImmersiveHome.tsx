@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 
 import { DigitalCore } from "./DigitalCore";
 
@@ -119,7 +119,7 @@ const serviceOptions: ServiceName[] = [
 const whatsAppLink = (message: string) =>
   "https://wa.me/5511991650950?text=" + encodeURIComponent(message);
 
-function SectionLabel({ number, children }: { number: string; children: React.ReactNode }) {
+function SectionLabel({ number, children }: { number: string; children: ReactNode }) {
   return (
     <p className="ztp-section-label">
       <span className="ztp-section-label-number">/{number}</span>

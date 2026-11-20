@@ -2,6 +2,17 @@
 
 API privada para o assistente do site da Zen Time Pro. O navegador **nunca** fala diretamente com o Worker e nunca recebe o segredo.
 
+## Estado da implantação — 20/11/2026
+
+- **Cloudflare Worker implantado:** `zen-assistant-api`, conta `2f4b2f7fdd7ebe21b581511b4b3192a8`.
+- **Endereço configurado:** `https://zen-assistant-api.consultor-douglasaraujo.workers.dev/chat`.
+- **Modelo:** `@cf/zai-org/glm-4.7-flash`.
+- **Verificado via API Cloudflare:** implantação, binding `AI`, existência de `ZEN_WORKER_SECRET` e habilitação de `workers.dev`.
+- **Não verificado:** resposta end-to-end do endpoint e integração do Preview da Vercel, pois o projeto `Zentimepro2` não está exposto nas contas Vercel conectadas.
+- **Segredo protegido:** foi gerado no momento do deploy sem gravação no Git e sem expor seu valor. Como segredo não é recuperável pela API, configure um segredo novo e igual **no Worker e na Vercel ao conectar o projeto**, usando ambientes seguros e sem enviá-lo na conversa.
+- A versão atualmente implantada é um bundle autocontido gerado do catálogo de 17 tópicos (`src/lib/zen-knowledge.ts`); mudanças futuras nessa base exigem nova implantação do Worker.
+- **Não usar** o token Cloudflare previamente compartilhado em mensagem; ele deve permanecer revogado.
+
 ## Conta Cloudflare
 
 O Account ID informado já está configurado em `wrangler.jsonc`. Ele é um identificador de conta, não uma credencial de autenticação. A configuração da conta ainda precisa ser autenticada no terminal ou pelo painel Cloudflare.

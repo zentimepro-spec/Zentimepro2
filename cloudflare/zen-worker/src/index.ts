@@ -93,7 +93,7 @@ export default {
     ].join("\n");
 
     try {
-      const model = env.ZEN_MODEL || "@cf/meta/llama-3.1-8b-instruct";
+      const model = env.ZEN_MODEL || "@cf/zai-org/glm-4.7-flash";
       const raw = await env.AI.run(model, {
         messages: [{ role: "system", content: rules }, ...history, { role: "user", content: body.question.slice(0, 550) }],
         max_tokens: 250,

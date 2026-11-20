@@ -3,6 +3,8 @@ import Link from "next/link";
 
 import { StudioHero, StudioSection } from "../components/StudioShell";
 import { ProjectBriefWizard } from "../components/ProjectBriefWizard";
+import { FounderStory } from "../components/FounderStory";
+import { zenWhatsAppLink } from "@/lib/zen-knowledge";
 import { createPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createPageMetadata({
@@ -15,9 +17,12 @@ export default function ContactPage() {
   return <main className="studio-page">
     <StudioHero index="05" eyebrow="VAMOS CRIAR?" title="Toda grande ideia" accent="começa aqui." description="Não precisa chegar com tudo pronto. Conte seu objetivo e nós ajudamos a transformar sua necessidade em um projeto com direção.">
       <a href="#briefing" className="studio-primary-btn">Começar briefing ↓</a>
+      <a href={zenWhatsAppLink("Olá, Zen Time Pro! Gostaria de conversar sobre meu projeto e solicitar uma proposta.")} target="_blank" rel="noopener noreferrer" className="studio-ghost-btn">Conversar no WhatsApp ↗</a>
       <button type="button" data-zen-launcher className="studio-ghost-btn">Perguntar ao Zen ✳</button>
     </StudioHero>
+    <FounderStory compact />
     <StudioSection id="briefing" number="01" label="SEU PROJETO" title="Comece uma conversa que faz sentido." description="Um caminho simples para organizar a necessidade e enviar as informações ao nosso comercial.">
+      <div className="studio-contact-brief-cta"><span>Prefere conversar antes de preencher?</span><a href={zenWhatsAppLink("Olá, Zen Time Pro! Quero conversar antes de enviar um briefing.")} target="_blank" rel="noopener noreferrer">Chamar no WhatsApp ↗</a></div>
       <ProjectBriefWizard />
     </StudioSection>
     <StudioSection number="02" label="OUTRAS FORMAS DE CONTATO" title="Prefere falar diretamente?" description="Escolha o canal de sua preferência. Estamos disponíveis para empresas em São Paulo e em todo o Brasil.">

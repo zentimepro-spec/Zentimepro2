@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { zenWhatsAppLink } from "@/lib/zen-knowledge";
 
 type StudioHeroProps = {
   index: string;
@@ -52,6 +53,7 @@ export function StudioCTA({ title = "Seu próximo projeto começa aqui.", descri
     <div className="studio-bottom-actions">
       <button data-cursor="Conversar" type="button" className="studio-primary-btn" data-zen-launcher="true" aria-label="Conversar com o Zen sobre seu projeto">Conversar com Zen ↗</button>
       <Link href="/contato" className="studio-ghost-btn">{action} ↗</Link>
+      <a href={zenWhatsAppLink("Olá, Zen Time Pro! Gostaria de conversar sobre uma solução digital para minha empresa.")} target="_blank" rel="noopener noreferrer" className="studio-ghost-btn">Falar no WhatsApp ↗</a>
     </div>
   </section>;
 }

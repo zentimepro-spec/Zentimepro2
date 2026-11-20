@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 
 import { DigitalCore } from "./DigitalCore";
+import { zenWhatsAppLink } from "@/lib/zen-knowledge";
 
 const services = [
   {
@@ -107,9 +108,6 @@ const industries = [
 ] as const;
 
 type Industry = (typeof industries)[number];
-const whatsAppLink = (message: string) =>
-  "https://wa.me/5511991650950?text=" + encodeURIComponent(message);
-
 function SectionLabel({ number, children }: { number: string; children: ReactNode }) {
   return (
     <p className="ztp-section-label">
@@ -284,6 +282,7 @@ export function ImmersiveHome() {
           <div className="ztp-hero-actions">
             <button type="button" onClick={showAssistant} className="ztp-primary-button ztp-hero-main-button">Iniciar meu projeto <span aria-hidden="true">↗</span></button>
             <a href="#projetos" className="ztp-outline-button">Explorar projetos <span aria-hidden="true">↓</span></a>
+            <a href={zenWhatsAppLink("Olá, Zen Time Pro! Gostaria de solicitar um site ou sistema para meu negócio.")} target="_blank" rel="noopener noreferrer" className="ztp-outline-button">Falar pelo WhatsApp <span aria-hidden="true">↗</span></a>
           </div>
           <div className="ztp-hero-proof">
             <div><strong>01 /</strong><span>Design que se destaca</span></div>
@@ -359,7 +358,7 @@ export function ImmersiveHome() {
         <Link href="/portfolio" className="ztp-outline-button ztp-all-projects">Ver portfólio completo <span aria-hidden="true">↗</span></Link>
       </section>
 
-      <SiteSimulator onContact={(message) => window.open(whatsAppLink(message), "_blank", "noopener,noreferrer")} />
+      <SiteSimulator onContact={(message) => window.open(zenWhatsAppLink(message), "_blank", "noopener,noreferrer")} />
 
       <section id="processo" className="ztp-section ztp-process" data-reveal>
         <SectionLabel number="04">NOSSO PROCESSO</SectionLabel>
@@ -395,7 +394,7 @@ export function ImmersiveHome() {
         <p>Existe uma maneira melhor de apresentar sua empresa ao mundo. Vamos construir a sua?</p>
         <div className="ztp-final-actions">
           <button type="button" className="ztp-primary-button" onClick={showAssistant}>Criar meu projeto <span aria-hidden="true">↗</span></button>
-          <a href={whatsAppLink("Olá, Zen Time Pro! Acessei o site e gostaria de conversar sobre um projeto.")} target="_blank" rel="noopener noreferrer" className="ztp-outline-button">Falar no WhatsApp ↗</a>
+          <a href={zenWhatsAppLink("Olá, Zen Time Pro! Acessei o site e gostaria de conversar sobre um projeto.")} target="_blank" rel="noopener noreferrer" className="ztp-outline-button">Falar no WhatsApp ↗</a>
         </div>
         <span className="ztp-final-giant" aria-hidden="true">ZENTIME</span>
       </section>

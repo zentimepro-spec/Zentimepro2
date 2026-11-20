@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { zenWhatsAppLink } from "@/lib/zen-knowledge";
 
 const nav = [["Serviços","/servicos"],["Portfólio","/portfolio"],["Preços","/precos"],["Sobre","/sobre"],["Contato","/contato"]] as const;
 
@@ -18,6 +19,7 @@ export function SiteFooter() {
       <div className="studio-footer-contact">
         <h3>VAMOS CONVERSAR?</h3>
         <a href="mailto:zentimepro@gmail.com">zentimepro@gmail.com</a>
+        <a className="studio-footer-whatsapp" href={zenWhatsAppLink("Olá, Zen Time Pro! Gostaria de solicitar uma proposta comercial.")} target="_blank" rel="noopener noreferrer">Solicitar orçamento pelo WhatsApp ↗</a>
         <a href="https://wa.me/5511991650950" target="_blank" rel="noopener noreferrer">+55 (11) 99165-0950 ↗</a>
         <a href="https://www.instagram.com/zentimepro/" target="_blank" rel="noopener noreferrer">Instagram @zentimepro ↗</a>
         <p>Atendimento em São Paulo e em todo o Brasil.</p>

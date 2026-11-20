@@ -2,11 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { StudioHero, StudioSection, StudioCTA } from "../components/StudioShell";
+import { FounderStory } from "../components/FounderStory";
 import { createPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createPageMetadata({
   title: "Sobre a Zen Time Pro — design e tecnologia com propósito",
-  description: "Conheça a visão, a metodologia e os princípios da Zen Time Pro para criar experiências digitais, sites, CRM e sistemas web.",
+  description: "Conheça Douglas Araujo, fundador da Zen Time Pro, seus objetivos e nossa visão sobre sites, CRM e desenvolvimento de soluções digitais.",
   path: "/sobre",
 });
 
@@ -28,6 +29,8 @@ export default function AboutPage() {
       <p className="studio-manifesto-big">Acreditamos que tecnologia é mais do que código.<br/><span>É uma nova forma de criar possibilidades.</span></p>
       <div className="studio-manifesto-caption"><span className="studio-manifesto-stamp">Z✳</span><p>Uma presença digital de verdade precisa transmitir valor, facilitar decisões e resolver problemas reais. Por isso, combinamos design marcante e soluções técnicas úteis.</p></div>
     </section>
+
+    <FounderStory />
 
     <StudioSection number="01" label="NOSSA ESSÊNCIA" title="Ideias claras. Execução consistente." description="Uma empresa digital deve demonstrar competência tanto no que o visitante vê quanto na experiência que ele vive.">
       <div className="studio-feature-grid">

@@ -4,6 +4,7 @@ import { Poppins } from "next/font/google";
 import { PublicChrome } from "./components/PublicChrome";
 import "./globals.css";
 import "./studio.css";
+import "./zen.css";
 import { absoluteUrl, siteConfig } from "@/lib/seo";
 
 const poppins = Poppins({

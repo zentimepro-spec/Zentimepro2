@@ -18,7 +18,7 @@ O Account ID informado já está configurado em `wrangler.jsonc`. Ele é um iden
 
 Opcional: vincule um namespace KV à variável `ZEN_RATE` no painel do Worker para limitar aproximadamente 15 mensagens/minuto por identificador anonimizado. Para limites rigorosos em alta escala, use Durable Objects ou Rate Limiting dedicado.
 
-Model padrão `@cf/meta/llama-3.1-8b-instruct`, substituível pelo secret/text variable `ZEN_MODEL` depois de testes e confirmação de custos/disponibilidade. **Não inclua dados privados** na base de conhecimento pública em `src/lib/zen-knowledge.ts`.
+Modelo padrão `@cf/zai-org/glm-4.7-flash`, substituível pelo secret/text variable `ZEN_MODEL` depois de testes e confirmação de custos/disponibilidade. **Não inclua dados privados** na base de conhecimento pública em `src/lib/zen-knowledge.ts`.
 
 O Worker usa somente informações curadas do código. Não lê o banco interno e não registra leads. Leitura de páginas e atualização de documentos devem ser aprovadas no catálogo, que mantém preços e status auditáveis.
 

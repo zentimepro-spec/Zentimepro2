@@ -242,3 +242,21 @@
 .ztp-project-real-restricted span{color:#9cbfdc;font-size:12px}
 .ztp-project-real-restricted small{color:#77dfff;font-size:10px}
 @media(max-width:640px){.ztp-project-real-live,.ztp-project-real-restricted{min-height:190px}.ztp-project-real-restricted strong{font-size:22px}}
+
+/* Real project captures: explicit height and unoptimized local AVIF ensure
+   the cards render without relying on the Vercel Image Optimization API. */
+.ztp-project-window{display:flex;flex-direction:column}
+.ztp-project-window-top{flex:0 0 28px}
+.ztp-project-window>.ztp-project-real-image{
+  display:block;
+  flex:1 1 auto;
+  width:100%;
+  height:calc(100% - 28px);
+  min-height:0;
+  object-fit:contain;
+  object-position:center top;
+  background:#080e1d
+}
+.ztp-project-art-musas .ztp-project-window{
+  border-color:rgba(255,97,180,.35)
+}

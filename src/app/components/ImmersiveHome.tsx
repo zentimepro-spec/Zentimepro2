@@ -107,15 +107,6 @@ const industries = [
 ] as const;
 
 type Industry = (typeof industries)[number];
-type ServiceName = "Site profissional" | "Landing page" | "CRM / automações" | "Sistema personalizado";
-
-const serviceOptions: ServiceName[] = [
-  "Site profissional",
-  "Landing page",
-  "CRM / automações",
-  "Sistema personalizado",
-];
-
 const whatsAppLink = (message: string) =>
   "https://wa.me/5511991650950?text=" + encodeURIComponent(message);
 
@@ -143,16 +134,15 @@ function ProjectPreview({ project }: { project: (typeof projects)[number] }) {
             className="ztp-project-real-image"
           />
         ) : (
-          <div className="ztp-project-mock" aria-hidden="true">
-            <span className="ztp-project-mock-brand">{project.name}</span>
-            <div className="ztp-project-mock-display">
-              <span className="ztp-project-mock-kicker">DESIGN × TECNOLOGIA</span>
-              <strong>{project.name}</strong>
-              <span className="ztp-project-mock-line" />
-              <span className="ztp-project-mock-pill">Explorar projeto</span>
-            </div>
-            <div className="ztp-project-mock-footer"><span /><span /><span /></div>
-            <span className="ztp-project-mock-disclaimer">Prévia conceitual · visite o projeto real</span>
+          <div className="ztp-project-real-live">
+            {project.theme === "tfa" ? (
+              <div className="ztp-project-real-restricted"><strong>TFA Operacional</strong><span>Sistema com acesso controlado</span><small>Conheça o projeto na galeria ↗</small></div>
+            ) : (
+              <>
+                <iframe src={project.url} title={"Prévia pública do site " + project.name} loading="lazy" sandbox="allow-scripts allow-same-origin" referrerPolicy="strict-origin-when-cross-origin" tabIndex={-1} />
+                <span className="ztp-project-real-hint">Prévia do site público · clique para visitar</span>
+              </>
+            )}
           </div>
         )}
       </div>
@@ -239,104 +229,7 @@ function SiteSimulator({ onContact }: { onContact: (message: string) => void }) 
   );
 }
 
-function ConsultationDialog({ open, onClose }: { open: boolean; onClose: () => void }) {
-  const [service, setService] = useState<ServiceName>("Site profissional");
-  const [business, setBusiness] = useState("");
-  const [objective, setObjective] = useState("");
-  const [step, setStep] = useState(0);
-  const closeRef = useRef<HTMLButtonElement>(null);
-
-  useEffect(() => {
-    if (!open) return;
-    const previousFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    closeRef.current?.focus();
-    function onKey(event: KeyboardEvent) {
-      if (event.key === "Escape") onClose();
-    }
-    document.addEventListener("keydown", onKey);
-    return () => {
-      document.body.style.overflow = previousOverflow;
-      document.removeEventListener("keydown", onKey);
-      previousFocus?.focus();
-    };
-  }, [open, onClose]);
-
-  if (!open) return null;
-
-  const message = [
-    "Olá, Zen Time Pro! Gostaria de conversar sobre um projeto.",
-    "Serviço: " + service,
-    "Empresa/segmento: " + (business.trim() || "Não informado"),
-    "Objetivo: " + (objective.trim() || "Gostaria de orientação para definir o escopo."),
-    "Origem: consultor digital do site.",
-  ].join("\n");
-
-  return (
-    <div className="ztp-dialog-backdrop" onPointerDown={(event) => { if (event.target === event.currentTarget) onClose(); }}>
-      <section className="ztp-dialog" role="dialog" aria-modal="true" aria-labelledby="ztp-dialog-title">
-        <div className="ztp-dialog-topbar">
-          <div className="ztp-assistant-identity">
-            <span className="ztp-assistant-avatar">✳</span>
-            <span><strong>Consultor Zen</strong><small>Pré-atendimento digital · guiado</small></span>
-          </div>
-          <button ref={closeRef} type="button" className="ztp-close-button" aria-label="Fechar consultor" onClick={onClose}>×</button>
-        </div>
-        <div className="ztp-dialog-body">
-          <div className="ztp-dialog-progress" aria-label={"Etapa " + (step + 1) + " de 3"}>
-            {[0, 1, 2].map((index) => <span key={index} className={index <= step ? "is-active" : ""} />)}
-          </div>
-          {step === 0 ? (
-            <>
-              <p className="ztp-chat-bubble">Olá! Que bom ter você aqui. Vamos descobrir qual solução combina com seu negócio?</p>
-              <h2 id="ztp-dialog-title">O que você precisa criar?</h2>
-              <div className="ztp-chat-options">
-                {serviceOptions.map((option) => (
-                  <button type="button" key={option} aria-pressed={service === option} className={service === option ? "is-active" : ""} onClick={() => setService(option)}>{option} <span aria-hidden="true">↗</span></button>
-                ))}
-              </div>
-            </>
-          ) : step === 1 ? (
-            <>
-              <p className="ztp-chat-bubble">Excelente! Um projeto de {service.toLowerCase()} pode seguir caminhos diferentes. Conte só mais um pouco.</p>
-              <h2 id="ztp-dialog-title">Sobre seu negócio</h2>
-              <label className="ztp-chat-label">Nome ou segmento da empresa
-                <input value={business} onChange={(event) => setBusiness(event.target.value)} maxLength={90} placeholder="Ex.: clínica, escritório, loja..." />
-              </label>
-              <label className="ztp-chat-label">O que você gostaria de melhorar?
-                <textarea value={objective} onChange={(event) => setObjective(event.target.value)} maxLength={800} rows={4} placeholder="Ex.: atrair clientes, vender online, organizar agendamentos..." />
-              </label>
-            </>
-          ) : (
-            <>
-              <p className="ztp-chat-bubble">Perfeito. Organizei as informações para facilitar sua conversa com nossa equipe.</p>
-              <h2 id="ztp-dialog-title">Seu briefing está pronto.</h2>
-              <div className="ztp-briefing-summary">
-                <p><span>SERVIÇO</span><strong>{service}</strong></p>
-                <p><span>NEGÓCIO</span><strong>{business.trim() || "A definir"}</strong></p>
-                <p><span>OBJETIVO</span><strong>{objective.trim() || "Orientação inicial"}</strong></p>
-              </div>
-              <p className="ztp-chat-disclaimer">Você escolhe se deseja enviar estas informações pelo WhatsApp. Nada é enviado automaticamente.</p>
-            </>
-          )}
-          <div className="ztp-dialog-actions">
-            {step > 0 ? <button type="button" className="ztp-secondary-button" onClick={() => setStep(step - 1)}>Voltar</button> : null}
-            {step < 2 ? (
-              <button type="button" className="ztp-primary-button" onClick={() => setStep(step + 1)}>Continuar <span aria-hidden="true">↗</span></button>
-            ) : (
-              <a className="ztp-primary-button" href={whatsAppLink(message)} target="_blank" rel="noopener noreferrer" onClick={onClose}>Conversar no WhatsApp ↗</a>
-            )}
-          </div>
-        </div>
-        <p className="ztp-dialog-footer">Pré-atendimento guiado. Propostas e valores são confirmados pela equipe.</p>
-      </section>
-    </div>
-  );
-}
-
 export function ImmersiveHome() {
-  const [assistantOpen, setAssistantOpen] = useState(false);
   const [commandsOpen, setCommandsOpen] = useState(false);
   const mainRef = useRef<HTMLElement>(null);
 
@@ -370,8 +263,7 @@ export function ImmersiveHome() {
     return () => window.removeEventListener("keydown", onKey);
   }, []);
 
-  const closeAssistant = () => setAssistantOpen(false);
-  const showAssistant = () => setAssistantOpen(true);
+  const showAssistant = () => window.dispatchEvent(new Event("zen:open"));
 
   return (
     <main ref={mainRef} className="ztp-home">
@@ -508,10 +400,7 @@ export function ImmersiveHome() {
         </div>
         <span className="ztp-final-giant" aria-hidden="true">ZENTIME</span>
       </section>
-
-      <button className="ztp-assistant-fab" type="button" onClick={showAssistant} aria-label="Abrir consultor digital"><span>✳</span><span>Planeje seu projeto</span></button>
       <button className="ztp-command-trigger" type="button" onClick={() => setCommandsOpen(true)} aria-label="Abrir atalhos de navegação">⌘ K</button>
-      <ConsultationDialog open={assistantOpen} onClose={closeAssistant} />
       {commandsOpen ? (
         <div className="ztp-dialog-backdrop" onPointerDown={(event) => { if (event.target === event.currentTarget) setCommandsOpen(false); }}>
           <div className="ztp-command-panel" role="dialog" aria-modal="true" aria-label="Navegação rápida">

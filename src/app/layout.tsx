@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 
 import { PublicChrome } from "./components/PublicChrome";
+import { SiteHeader } from "./components/SiteHeader";
+import { SiteFooter } from "./components/SiteFooter";
 import "./globals.css";
 import "./studio.css";
 import "./zen.css";
@@ -88,7 +90,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
-        <PublicChrome>{children}</PublicChrome>
+        <PublicChrome header={<SiteHeader />} footer={<SiteFooter />}>{children}</PublicChrome>
       </body>
     </html>
   );

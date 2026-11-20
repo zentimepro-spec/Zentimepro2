@@ -494,7 +494,7 @@ export function ImmersiveHome() {
             <p>Converse com a Zen Time Pro sobre a condição promocional para landing pages simples elegíveis.</p>
             <button type="button" className="ztp-primary-button" onClick={showAssistant}>Quero aproveitar <span aria-hidden="true">↗</span></button>
           </div>
-          <div className="ztp-offer-price"><span>OFERTA A PARTIR DE</span><strong><small>R$</small> 297</strong><p>Condição promocional sujeita a escopo e disponibilidade. Domínio e hospedagem devem ser confirmados na proposta.</p></div>
+          <div className="ztp-offer-price"><span>OFERTA A PARTIR DE</span><strong><small>R$</small> 297</strong><span>+ domínio</span><p>Preço promocional para landing pages simples elegíveis. Domínio à parte; hospedagem, escopo e disponibilidade sujeitos à proposta.</p></div>
         </div>
       </section>
 

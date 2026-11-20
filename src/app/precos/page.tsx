@@ -1,186 +1,31 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 
-import { Reveal } from "@/components/motion/reveal";
+import { StudioHero, StudioSection, StudioCTA } from "../components/StudioShell";
+import { PricingConfigurator } from "../components/PricingConfigurator";
 import { createPageMetadata } from "@/lib/seo";
 
-const plans = [
-  {
-    name: "Landing Page Simples",
-    price: "R$ 499,00",
-    summary: "Presenca digital objetiva para captacao rapida.",
-    items: [
-      "Taxas de registro de dominio e hospedagem",
-      "SEO otimizado",
-      "Botao de WhatsApp",
-    ],
-  },
-  {
-    name: "Landing Page Completa",
-    price: "R$ 799,00",
-    summary: "Estrutura mais completa para captar e acompanhar oportunidades.",
-    items: [
-      "Taxas de registro de dominio e hospedagem",
-      "SEO otimizado",
-      "Painel CRM para gerenciar seus leads",
-      "Botao de WhatsApp",
-    ],
-  },
-  {
-    name: "Sistemas Internos para empresas",
-    price: "Sob consulta",
-    summary: "Projetos sob medida conforme operacao, regras e complexidade.",
-    items: [
-      "Escopo tecnico personalizado",
-      "Analise do fluxo operacional",
-      "Planejamento conforme necessidade da empresa",
-    ],
-  },
-];
-
-const maintenanceItems = [
-  "Atualizacoes pontuais e alteracoes recorrentes",
-  "Ajustes visuais, conteudo e pequenas melhorias",
-  "Acompanhamento mensal por R$ 150,00",
-];
-
 export const metadata: Metadata = createPageMetadata({
-  title: "Precos de landing pages, CRM e sistemas",
-  description:
-    "Consulte os precos da Zen Time Pro para landing pages, CRM comercial, sistemas internos e manutencao mensal.",
+  title: "Preços e configurador de sites, landing pages e sistemas",
+  description: "Conheça os preços publicados da Zen Time Pro, consulte a oferta de Black Friday e monte um briefing para orçamento de sites, CRM e sistemas web.",
   path: "/precos",
 });
 
 export default function PricingPage() {
-  return (
-    <main className="mx-auto min-h-[100dvh] max-w-7xl px-4 py-14 sm:px-6 sm:py-20 lg:px-10">
-      <section className="space-y-6 text-center">
-        <Reveal delay={40}>
-          <p className="text-sm uppercase tracking-[0.3em] text-cyan-400">Precificacao</p>
-        </Reveal>
-        <Reveal delay={120}>
-          <h1 className="mx-auto max-w-5xl text-4xl font-semibold text-white sm:text-6xl">
-            Valores claros para comecar com mais presenca e estrutura digital.
-          </h1>
-        </Reveal>
-        <Reveal delay={190}>
-          <p className="mx-auto max-w-3xl text-base leading-7 text-slate-300 sm:text-lg sm:leading-8">
-            Escolha o formato que faz sentido para o seu momento. Se o projeto exigir algo mais
-            personalizado, montamos o escopo sob consulta.
-          </p>
-        </Reveal>
-      </section>
-
-      <section className="mt-12 overflow-hidden rounded-[1.8rem] border border-cyan-400/35 bg-[linear-gradient(120deg,rgba(11,64,155,0.8),rgba(3,23,56,0.92))] p-6 shadow-[0_22px_75px_rgba(0,74,174,0.22)] sm:p-9">
-        <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-          <div className="space-y-3">
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-cyan-200">Condição especial de Black Friday</p>
-            <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">Landing page simples por R$ 297 + domínio</h2>
-            <p className="max-w-2xl text-sm leading-7 text-slate-200">
-              Oferta promocional para projetos elegíveis. Domínio contratado à parte; escopo, hospedagem e disponibilidade sujeitos à confirmação comercial.
-            </p>
-          </div>
-          <a
-            href="https://wa.me/5511991650950?text=Ol%C3%A1%2C%20Zen%20Time%20Pro!%20Quero%20saber%20mais%20sobre%20a%20Black%20Friday%20de%20R%24%20297%20%2B%20dom%C3%ADnio."
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex min-h-14 shrink-0 items-center justify-center rounded-full bg-white px-7 py-4 text-sm font-semibold text-blue-900 transition hover:bg-cyan-100"
-          >
-            Consultar oferta ↗
-          </a>
-        </div>
-      </section>
-
-      <section className="mt-14 grid gap-5 sm:gap-6 lg:grid-cols-3">
-        {plans.map((plan, index) => (
-          <Reveal
-            key={plan.name}
-            delay={index * 90}
-            variant="up"
-            as="article"
-            className="rounded-[2rem] border border-white/10 bg-white/[0.045] p-5 shadow-[0_24px_70px_rgba(2,6,23,0.22)] backdrop-blur-xl sm:p-7"
-          >
-            <div className="space-y-4">
-              <p className="text-sm uppercase tracking-[0.28em] text-cyan-300">{plan.name}</p>
-              <p className="text-3xl font-semibold text-white sm:text-4xl">{plan.price}</p>
-              <p className="text-sm leading-7 text-slate-300">{plan.summary}</p>
-            </div>
-
-            <div className="mt-6 h-px bg-white/10 sm:mt-8" />
-
-            <ul className="mt-6 space-y-4 sm:mt-8">
-              {plan.items.map((item) => (
-                <li key={item} className="flex items-start gap-3 text-sm leading-7 text-slate-300">
-                  <span className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-cyan-300" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </Reveal>
-        ))}
-      </section>
-
-      <Reveal
-        as="section"
-        className="mt-14 rounded-[2rem] border border-white/10 bg-[radial-gradient(circle_at_top_left,rgba(34,211,238,0.12),transparent_42%),rgba(255,255,255,0.04)] p-6 shadow-[0_24px_70px_rgba(2,6,23,0.22)] backdrop-blur-xl sm:mt-16 sm:p-8 lg:p-10"
-      >
-        <div className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
-          <Reveal delay={40} className="space-y-4">
-            <p className="text-sm uppercase tracking-[0.3em] text-cyan-400">Manutencao mensal</p>
-            <h2 className="text-2xl font-semibold text-white sm:text-3xl">Continuamos cuidando do projeto depois da entrega.</h2>
-            <p className="text-lg font-medium text-white">R$ 150,00 mensais</p>
-            <p className="max-w-2xl text-sm leading-7 text-slate-300">
-              Ideal para empresas que desejam manter o site atualizado, ajustar informacoes e solicitar alteracoes com mais tranquilidade.
-            </p>
-          </Reveal>
-
-          <Reveal
-            delay={120}
-            variant="right"
-            className="rounded-[1.8rem] border border-white/10 bg-[#081120]/70 p-5 sm:p-6"
-          >
-            <ul className="space-y-4">
-              {maintenanceItems.map((item) => (
-                <li key={item} className="flex items-start gap-3 text-sm leading-7 text-slate-300">
-                  <span className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-cyan-300" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </Reveal>
-        </div>
-      </Reveal>
-
-      <Reveal
-        as="section"
-        className="mt-14 rounded-[2rem] border border-white/10 bg-white/[0.04] p-6 shadow-[0_20px_60px_rgba(2,6,23,0.18)] backdrop-blur-xl sm:mt-16 sm:p-8"
-      >
-        <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-          <div className="space-y-3">
-            <p className="text-sm uppercase tracking-[0.3em] text-cyan-400">Atendimento comercial</p>
-            <h2 className="max-w-3xl text-2xl font-semibold text-white sm:text-3xl">
-              Se precisar de um escopo diferente, montamos a proposta conforme sua necessidade.
-            </h2>
-          </div>
-
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
-            <Link
-              href="/contato"
-              className="inline-flex min-h-14 w-full items-center justify-center rounded-full bg-gradient-to-r from-[#2563eb] to-[#06b6d4] px-8 py-4 text-sm font-semibold text-white shadow-[0_18px_44px_rgba(37,99,235,0.28)] transition hover:-translate-y-0.5 sm:min-w-[220px] sm:w-auto"
-            >
-              Solicitar proposta
-            </Link>
-            <a
-              href="https://api.whatsapp.com/send?phone=5511991650950&text=Ola,%20vim%20atraves%20da%20pagina%20de%20precos%20e%20quero%20falar%20sobre%20uma%20proposta."
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex min-h-14 w-full items-center justify-center rounded-full border border-white/12 bg-white/6 px-8 py-4 text-sm font-semibold text-white transition hover:border-cyan-300/40 hover:bg-white/10 sm:min-w-[220px] sm:w-auto"
-            >
-              Falar no WhatsApp
-            </a>
-          </div>
-        </div>
-      </Reveal>
-    </main>
-  );
+  return <main className="studio-page">
+    <StudioHero index="03" eyebrow="INVESTIMENTO INTELIGENTE" title="Sua ideia merece" accent="um plano à altura." description="Valores claros onde já existe uma oferta definida e orçamento personalizado quando o projeto exige mais. Explore as possibilidades e organize seu pedido.">
+      <a href="#configurador" className="studio-primary-btn">Montar meu projeto ↓</a>
+    </StudioHero>
+    <StudioSection id="configurador" number="01" label="CONFIGURADOR" title="Escolha o que faz sentido." description="Experimente combinações e prepare sua solicitação. Sem preços fictícios para funcionalidades adicionais.">
+      <PricingConfigurator />
+    </StudioSection>
+    <StudioSection number="02" label="COMO FUNCIONA" title="Transparência do início à entrega." description="Uma proposta profissional começa com expectativas claras.">
+      <div className="studio-feature-grid">
+        <article className="studio-feature"><span className="studio-feature-index">01 / BRIEFING</span><h3>Entendemos a necessidade</h3><p>Conversamos sobre objetivos, referências, funcionalidades, integrações e conteúdo.</p></article>
+        <article className="studio-feature"><span className="studio-feature-index">02 / PROPOSTA</span><h3>Definimos escopo e prazo</h3><p>Entregáveis, valores, domínio, hospedagem e condições são confirmados antes do desenvolvimento.</p></article>
+        <article className="studio-feature"><span className="studio-feature-index">03 / EVOLUÇÃO</span><h3>Publicação e manutenção</h3><p>O plano regular de manutenção mensal é divulgado a R$ 150, sujeito ao escopo contratado.</p></article>
+      </div>
+      <p className="studio-pricing-disclaimer">Condição de Black Friday divulgada: landing page simples por R$ 297 + domínio à parte, para projetos elegíveis e mediante confirmação comercial. Preços regulares publicados: landing page simples R$ 499; completa R$ 799; manutenção R$ 150/mês; sistemas sob consulta.</p>
+    </StudioSection>
+    <StudioCTA title="Não sabe qual solução escolher?" description="O Zen pode ajudar você a entender os planos e montar o próximo passo." />
+  </main>;
 }

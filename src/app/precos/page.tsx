@@ -71,6 +71,26 @@ export default function PricingPage() {
         </Reveal>
       </section>
 
+      <section className="mt-12 overflow-hidden rounded-[1.8rem] border border-cyan-400/35 bg-[linear-gradient(120deg,rgba(11,64,155,0.8),rgba(3,23,56,0.92))] p-6 shadow-[0_22px_75px_rgba(0,74,174,0.22)] sm:p-9">
+        <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+          <div className="space-y-3">
+            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-cyan-200">Condição especial de Black Friday</p>
+            <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">Landing page simples por R$ 297 + domínio</h2>
+            <p className="max-w-2xl text-sm leading-7 text-slate-200">
+              Oferta promocional para projetos elegíveis. Domínio contratado à parte; escopo, hospedagem e disponibilidade sujeitos à confirmação comercial.
+            </p>
+          </div>
+          <a
+            href="https://wa.me/5511991650950?text=Ol%C3%A1%2C%20Zen%20Time%20Pro!%20Quero%20saber%20mais%20sobre%20a%20Black%20Friday%20de%20R%24%20297%20%2B%20dom%C3%ADnio."
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex min-h-14 shrink-0 items-center justify-center rounded-full bg-white px-7 py-4 text-sm font-semibold text-blue-900 transition hover:bg-cyan-100"
+          >
+            Consultar oferta ↗
+          </a>
+        </div>
+      </section>
+
       <section className="mt-14 grid gap-5 sm:gap-6 lg:grid-cols-3">
         {plans.map((plan, index) => (
           <Reveal

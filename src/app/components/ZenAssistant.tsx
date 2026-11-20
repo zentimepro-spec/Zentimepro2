@@ -47,8 +47,12 @@ export function ZenAssistant() {
 
   useEffect(() => {
     const onOpen = () => openZen();
+    const onClick = (event: MouseEvent) => {
+      if (event.target instanceof Element && event.target.closest("[data-zen-launcher]")) openZen();
+    };
     window.addEventListener("zen:open", onOpen);
-    return () => window.removeEventListener("zen:open", onOpen);
+    document.addEventListener("click", onClick);
+    return () => { window.removeEventListener("zen:open", onOpen); document.removeEventListener("click", onClick); };
   }, [openZen]);
 
   useEffect(() => {

@@ -137,14 +137,11 @@ function ProjectPreview({ project }: { project: (typeof projects)[number] }) {
           />
         ) : (
           <div className="ztp-project-real-live">
-            {project.theme === "tfa" ? (
-              <div className="ztp-project-real-restricted"><strong>TFA Operacional</strong><span>Sistema com acesso controlado</span><small>Conheça o projeto na galeria ↗</small></div>
-            ) : (
-              <>
-                <iframe src={project.url} title={"Prévia pública do site " + project.name} loading="lazy" sandbox="allow-scripts allow-same-origin" referrerPolicy="strict-origin-when-cross-origin" tabIndex={-1} />
-                <span className="ztp-project-real-hint">Prévia do site público · clique para visitar</span>
-              </>
-            )}
+            <div className="ztp-project-real-restricted">
+              <strong>{project.name}</strong>
+              <span>Sistema com acesso controlado</span>
+              <small>Conheça o projeto na galeria ↗</small>
+            </div>
           </div>
         )}
       </div>

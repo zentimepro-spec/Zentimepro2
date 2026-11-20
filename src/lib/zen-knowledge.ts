@@ -124,6 +124,43 @@ export const ZEN_KNOWLEDGE: ZenKnowledgeEntry[] = [
     links: [{ label: "Página de contato", href: "/contato" }, { label: "Conversar no WhatsApp", href: "https://wa.me/5511991650950" }],
     prompts: ["Quero solicitar orçamento", "Quais serviços vocês fazem?"],
   },
+
+  {
+    id: "whatsapp-landing", title: "Landing page com botão de WhatsApp",
+    keywords: ["landing page com whatsapp", "botao de whatsapp", "botão de whatsapp", "whatsapp no site", "mensagem automatica", "mensagem automática"],
+    content: "A Zen Time Pro desenvolve landing pages com acesso direto ao WhatsApp para facilitar o contato. O botão pode abrir uma conversa com texto inicial; automações mais complexas precisam de avaliação técnica e escopo individual.",
+    links: [{ label: "Landing com WhatsApp", href: "/servicos/landing-page-com-whatsapp" }, { label: "Ver preços", href: "/precos" }],
+    prompts: ["Vocês personalizam a mensagem?", "Quero uma landing page"],
+  },
+  {
+    id: "agenda", title: "Sistema de agenda para profissionais",
+    keywords: ["sistema de agenda", "controle de agenda", "marcar horario", "marcar horário", "agendamentos", "agenda online", "calendario", "calendário"],
+    content: "A Zen Time Pro desenvolve sistemas de agenda personalizados para organizar horários, compromissos e atendimentos. Recursos como confirmação, notificações, pagamentos ou integração com calendários dependem da proposta e não devem ser prometidos como padrão.",
+    links: [{ label: "Sistema de agenda", href: "/servicos/sistema-de-agenda-para-profissionais" }, { label: "Sistemas sob medida", href: "/servicos/sistemas-web" }],
+    prompts: ["Posso integrar minha agenda?", "Como solicitar um sistema?"],
+  },
+  {
+    id: "infra", title: "Domínio, hospedagem e manutenção",
+    keywords: ["domínio", "dominio", "hospedagem", "cloudflare", "vercel", "manutencao", "manutenção", "atualizações", "atualizacoes"],
+    content: "O projeto pode envolver domínio personalizado, hospedagem, manutenção e infraestrutura. O site informa manutenção mensal regular a R$ 150. A promoção Black Friday de R$ 297 informa domínio à parte. Custos de domínio, hospedagem, renovações e serviços extras devem ser confirmados na proposta.",
+    links: [{ label: "Valores divulgados", href: "/precos" }, { label: "Falar com a equipe", href: "/contato" }],
+    prompts: ["O domínio está incluído?", "Quanto custa manter meu site?"],
+  },
+  {
+    id: "seo", title: "Performance, SEO e responsividade",
+    keywords: ["google", "seo", "indexação", "indexacao", "performance", "velocidade", "responsivo", "mobile", "celular", "tablet"],
+    content: "Os projetos da Zen Time Pro consideram responsividade, experiência mobile, estrutura semântica e SEO técnico inicial. Ninguém pode prometer primeira posição, um volume fixo de visitas ou resultado comercial garantido.",
+    links: [{ label: "Criação de sites", href: "/servicos/criacao-de-sites-em-sao-paulo" }, { label: "Serviços", href: "/servicos" }],
+    prompts: ["Meu site aparece no Google?", "Qual site vocês recomendam?"],
+  },
+  {
+    id: "sobre", title: "Sobre a Zen Time Pro",
+    keywords: ["quem são", "quem sao", "sobre", "equipe", "zen time pro", "história", "historia", "manifesto"],
+    content: "A Zen Time Pro é um estúdio de desenvolvimento de sites, landing pages, CRM comercial e sistemas web. Sua proposta é combinar design, tecnologia e visão de negócios para criar experiências digitais úteis, com atendimento para empresas em São Paulo e no Brasil.",
+    links: [{ label: "Conhecer a Zen Time Pro", href: "/sobre" }, { label: "Ver trabalhos reais", href: "/portfolio" }],
+    prompts: ["Onde estão localizados?", "Que projetos vocês fizeram?"],
+  },
+
 ];
 
 function normalize(value: string) {

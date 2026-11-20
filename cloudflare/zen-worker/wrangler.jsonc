@@ -7,5 +7,7 @@
   },
   "observability": {
     "enabled": false
-  }
+  },
+  "account_id": "2f4b2f7fdd7ebe21b581511b4b3192a8",
+  "workers_dev": true
 }

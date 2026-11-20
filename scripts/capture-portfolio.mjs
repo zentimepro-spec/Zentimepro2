@@ -28,6 +28,7 @@ const views = [
 const outputDir = join(process.cwd(), "public", "portfolio");
 await mkdir(outputDir, { recursive: true });
 let completed = 0;
+const captures = { foncare: { desktop: "/portfolio-foncare.png" } };
 for (const target of targets) {
   for (const view of views) {
     const endpoint = "https://api.cloudflare.com/client/v4/accounts/" + encodeURIComponent(account) + "/browser-rendering/screenshot";
@@ -59,9 +60,12 @@ for (const target of targets) {
     }
     const filename = target.id + "-" + view.name + ".png";
     await writeFile(join(outputDir, filename), data);
+    captures[target.id] ||= {};
+    captures[target.id][view.name] = "/portfolio/" + filename;
     console.log("Captura real gravada:", filename);
     completed++;
   }
 }
+await writeFile(join(outputDir, "captures.json"), JSON.stringify(captures, null, 2) + "\n");
 console.log("Total de capturas:", completed);
 if (!completed) process.exitCode = 1;

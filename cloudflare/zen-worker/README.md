@@ -2,10 +2,16 @@
 
 API privada para o assistente do site da Zen Time Pro. O navegador **nunca** fala diretamente com o Worker e nunca recebe o segredo.
 
+## Conta Cloudflare
+
+O Account ID informado já está configurado em `wrangler.jsonc`. Ele é um identificador de conta, não uma credencial de autenticação. A configuração da conta ainda precisa ser autenticada no terminal ou pelo painel Cloudflare.
+
+**Segurança:** qualquer token previamente colado em uma conversa deve ser revogado e substituído. Nunca use o token da Cloudflare como `ZEN_WORKER_SECRET`.
+
 ## Implantação manual
 
 1. Acesse sua conta Cloudflare com permissão para criar Workers.
-2. Na raiz do repositório, rode `npx wrangler login` e `npx wrangler deploy --config cloudflare/zen-worker/wrangler.jsonc`.
+2. Na raiz do repositório, rode `npx wrangler login` e `npx wrangler deploy --config cloudflare/zen-worker/wrangler.jsonc`. O comando usará o Account ID já registrado no arquivo de configuração. Se houver mais de uma conta, confirme que a autenticação tem acesso a essa conta.
 3. Configure um segredo longo: `npx wrangler secret put ZEN_WORKER_SECRET --config cloudflare/zen-worker/wrangler.jsonc`. Nunca envie o segredo ao GitHub.
 4. Na Vercel, defina **apenas no ambiente server-side** `ZEN_WORKER_URL=https://SEU-WORKER.workers.dev/chat` e `ZEN_WORKER_SECRET` com o mesmo valor.
 5. Reimplante a preview. A rota `/api/zen/chat` passa a usar Workers AI; sem configuração, responde com o catálogo local.

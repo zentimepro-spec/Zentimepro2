@@ -5,6 +5,7 @@ import { PublicChrome } from "./components/PublicChrome";
 import "./globals.css";
 import "./studio.css";
 import "./zen.css";
+import "./studio-pages.css";
 import { absoluteUrl, siteConfig } from "@/lib/seo";
 
 const poppins = Poppins({

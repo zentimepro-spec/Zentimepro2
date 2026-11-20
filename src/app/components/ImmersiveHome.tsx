@@ -131,6 +131,8 @@ function ProjectPreview({ project }: { project: (typeof projects)[number] }) {
             width={860}
             height={600}
             loading="lazy"
+            unoptimized
+            sizes="(max-width: 720px) 100vw, 50vw"
             className="ztp-project-real-image"
           />
         ) : (
